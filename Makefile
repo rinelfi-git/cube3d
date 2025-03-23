@@ -1,4 +1,4 @@
-NAME = cube3d
+NAME = cub3D
 CC = gcc
 CARG = -Werror -Wextra -Wall
 INCs = -I./include -I./lib/mlx -I./lib/ft
@@ -9,7 +9,9 @@ SRCs = ./src/main.c \
 		./src/init/key.c \
 		./src/init/mlx.c \
 		./src/init/player.c \
-		./src/init/ray.c
+		./src/init/ray.c \
+		./src/pixel/draw.c \
+		./src/pixel/put_pixel.c
 OBJs = $(SRCs:.c=.o)
 LIBs = -L./lib/mlx -lmlx -L/usr/lib -lXext -lX11 -lm -lz \
 		-L./lib/ft -lft

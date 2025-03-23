@@ -6,14 +6,14 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:47:22 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/09 15:07:08 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:44:21 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 #include <stdlib.h>
 
-void	cube_init(t_cube3d *cube)
+void	cube_init(t_cub3d *cube)
 {
 	cube->config = NULL;
 	cube->key = NULL;
@@ -23,7 +23,7 @@ void	cube_init(t_cube3d *cube)
 	cube->refresh = 1;
 }
 
-void	cube_destroy(t_cube3d *cube)
+void	cube_destroy(t_cub3d *cube)
 {
 	if (cube->config)
 		config_free(&(cube->config), cube->mlx->server);

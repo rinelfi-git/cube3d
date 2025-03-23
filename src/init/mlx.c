@@ -6,14 +6,14 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:51:20 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/10 05:32:26 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:44:21 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 #include <stdlib.h>
 
-static t_pixel	*pixel_alloc(t_cube3d *cube)
+static t_pixel	*pixel_alloc(t_cub3d *cube)
 {
 	t_pixel	*out;
 
@@ -31,7 +31,7 @@ static void	pixel_free(t_pixel *pixel, void *mlx)
 	free(pixel);
 }
 
-t_mlx	*mlx_alloc(t_cube3d *cube)
+t_mlx	*mlx_alloc(t_cub3d *cube)
 {
 	t_mlx	*out;
 	void	*mlx;

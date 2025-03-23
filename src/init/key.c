@@ -6,14 +6,14 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:35:40 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/10 05:27:57 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:44:21 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 #include <stdlib.h>
 
-t_key	*key_alloc(t_cube3d *cube)
+t_key	*key_alloc(t_cub3d *cube)
 {
 	t_key	*out;
 
