@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 10:21:27 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/23 23:10:25 by erijania         ###   ########.fr       */
+/*   Created: 2025/03/23 22:50:47 by erijania          #+#    #+#             */
+/*   Updated: 2025/03/23 22:51:28 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-void	put_pixel_at(t_cub3d *game, int x, int y, int color)
-{
-	char	*addr;
-	t_pixel	*pix;
-	
-	pix = game->mlx->pixel;
-	addr = pix->addr + (y * pix->line_length + x * (pix->bits_per_pixel / 8));
-	*((unsigned int *) addr) = color;
-}
+int	imax(int a, int b);
+#endif

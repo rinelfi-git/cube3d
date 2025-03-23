@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 10:21:27 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/23 23:10:25 by erijania         ###   ########.fr       */
+/*   Created: 2025/03/23 23:22:06 by erijania          #+#    #+#             */
+/*   Updated: 2025/03/23 23:24:35 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdlib.h>
 
-void	put_pixel_at(t_cub3d *game, int x, int y, int color)
+void	map_free(t_map *map)
 {
-	char	*addr;
-	t_pixel	*pix;
-	
-	pix = game->mlx->pixel;
-	addr = pix->addr + (y * pix->line_length + x * (pix->bits_per_pixel / 8));
-	*((unsigned int *) addr) = color;
+	int	i;
+
+	i = 0;
+	if (map->data)
+	{
+		while (map->data[i])
+			free(map->data[i++]);
+		free(map->data);
+	}
+	free(map);
 }

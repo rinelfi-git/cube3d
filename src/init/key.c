@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 08:35:40 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/22 16:44:21 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/23 22:40:50 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_key	*key_alloc(t_cub3d *cube)
 	out->w = 0;
 	out->d = 0;
 	out->s = 0;
-	out->q = 0;
+	out->a = 0;
 	out->left = 0;
 	out->right = 0;
 	return (out);

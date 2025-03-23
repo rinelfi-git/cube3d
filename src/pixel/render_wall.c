@@ -6,11 +6,12 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 22:43:22 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/23 21:01:20 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:14:55 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
 static void	prepare_wall_render(t_cub3d *game, t_ray_info *info,
 		t_wall_render *r)

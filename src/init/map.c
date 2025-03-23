@@ -6,14 +6,16 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 19:00:19 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/22 19:19:20 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:21:01 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
+#include "utils.h"
+#include <stdlib.h>
 
-static void	free_2darray(void **array, int size)
+static void	free_2darray(char **array, int size)
 {
 	int	i;
 	
@@ -37,7 +39,7 @@ static int	create_map(t_map *map)
 	while (i < map->height)
 	{
 		map->data[i] = malloc(sizeof(char) * (map->width + 1));
-		ft_bzero(map->data[i], map->width + 1);
+		ft_memset(map->data[i], '1', map->width + 1);
 		if (!map->data[i++])
 		{
 			free_2darray(map->data, i);
@@ -63,19 +65,37 @@ t_map	*map_alloc(int width, int height)
 	return (out);
 }
 
-t_map	*map_clone(t_map *map)
+static void	fill_data(t_map *map, char **data)
 {
-	t_map	*out;
-	int		i;
+	int	i;
+	int	j;
 
-	out = map_alloc(map->width, map->height);
-	if (!out)
-		return (NULL);
 	i = 0;
 	while (i < map->height)
 	{
-		ft_strlcpy(out->data[i], map->data[i], map->width);
+		j = -1;
+		while (data[i][++j])
+		{
+			if (ft_strchr("10NEWS", data[i][j]))
+				map->data[i][j] = data[i][j];
+		}
 		i++;
 	}
+}
+
+t_map	*map_from_array(char **data)
+{
+	t_map	*out;
+	int		height;
+	int		width;
+
+	height = 0;
+	width = 0;
+	while(data[height])
+		width = imax(width, ft_strlen(data[height++]));
+	out = map_alloc(width, height);
+	if (!out)
+		return (NULL);
+	fill_data(out, data);
 	return (out);
 }

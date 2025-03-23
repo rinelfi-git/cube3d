@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 05:54:58 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/22 22:52:56 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:17:14 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define W_WIDTH 640
 # define BLOCK_SIZE 600
 # define TEXTURE_SIZE 64
-# define MOVE_STEP
-# define TURN_STEP
+# define MOVE_STEP 3
+# define TURN_STEP 0.015
 # define PI 3.141592653589793
 # define FOV PI / 3.0
 # define MALLOC_ERROR "Memory allocation error"
@@ -37,6 +37,7 @@ typedef struct s_miniline		t_miniline;
 typedef enum e_direction		t_direction;
 typedef struct s_data			t_data;
 typedef struct s_wall_render	t_wall_render;
+typedef	struct s_ray_vars		t_ray_vars;
 
 enum e_background
 {
@@ -57,7 +58,7 @@ struct s_key
 	int	w;
 	int	d;
 	int	s;
-	int	q;
+	int	a;
 	int	left;
 	int	right;
 };
@@ -69,6 +70,22 @@ struct s_ray_info
 	double		hit_x;
 	double		hit_y;
 	double		angle;
+};
+
+struct s_ray_vars
+{
+	double	ray_x;
+	double	ray_y;
+	int		map_x;
+	int		map_y;
+	double	dx;
+	double	dy;
+	double	d_dist_x;
+	double	d_dist_y;
+	double	next_delta_x;
+	double	next_delta_y;
+	int		step_x;
+	int		step_y;
 };
 
 struct s_pixel
@@ -166,7 +183,7 @@ void		cube_init(t_cub3d *cube);
 t_mlx		*mlx_alloc(t_cub3d *cube);
 t_config	*config_alloc(t_cub3d *cube, t_data *data);
 t_map		*map_alloc(int width, int height);
-t_map		*map_clone(t_map *map);
+t_map		*map_from_array(char **data);
 t_key		*key_alloc(t_cub3d *cube);
 t_player	*player_alloc(t_cub3d *cube, int x, int y, double angle);
 void		map_free(t_map *map);
@@ -175,8 +192,20 @@ void		config_free(t_config *config, void *mlx);
 void		key_free(t_key *key);
 void		player_free(t_player *player);
 void		rayinfo_free(t_ray_info *ray);
-void		cube_destroy(t_cub3d *cube);
+int			cube_destroy(t_cub3d *cube);
 void		fatal_error(t_cub3d *cube, char *msg, int code);
 
 void		put_pixel_at(t_cub3d *game, int x, int y, int color);
+int			get_texture_color(void *texture, int x, int y);
+int			check_collision(t_cub3d *game, char key);
+void		move_forward(t_player *player);
+void		move_backward(t_player *player);
+void		move_left(t_player *player);
+void		move_right(t_player *player);
+void		turn_left(t_player *player);
+void		turn_right(t_player *player);
+void		draw_3d(t_cub3d *game);
+t_ray_info	*get_ray_info(t_cub3d *cub, double angle);
+void		draw_background(t_cub3d *game);
+void		draw_wall(t_cub3d *game, int ray, t_ray_info *info);
 #endif

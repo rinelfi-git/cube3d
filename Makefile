@@ -6,12 +6,23 @@ SRCs = ./src/main.c \
 		./src/error/fatal_error.c \
 		./src/init/config.c \
 		./src/init/cube3d.c \
+		./src/init/free.c \
 		./src/init/key.c \
+		./src/init/map.c \
 		./src/init/mlx.c \
 		./src/init/player.c \
 		./src/init/ray.c \
 		./src/pixel/draw.c \
-		./src/pixel/put_pixel.c
+		./src/pixel/get_pixel.c \
+		./src/pixel/put_pixel.c \
+		./src/pixel/render_wall.c \
+		./src/player/check_collision.c \
+		./src/player/move.c \
+		./src/player/turn_around.c \
+		./src/raycasting/ray_info1.c \
+		./src/raycasting/ray_info2.c \
+		./src/raycasting/render.c \
+		./src/utils/math.c
 OBJs = $(SRCs:.c=.o)
 LIBs = -L./lib/mlx -lmlx -L/usr/lib -lXext -lX11 -lm -lz \
 		-L./lib/ft -lft

@@ -6,12 +6,11 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 14:49:14 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/22 21:56:14 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:07:22 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "error_manager.h"
 #include <stdlib.h>
 #include <sys/fcntl.h>
 #include <unistd.h>
@@ -25,7 +24,7 @@ t_config	*config_alloc(t_cub3d *game, t_data *data)
 		fatal_error(game, MALLOC_ERROR, 1);
 	out->ceil = data->c;
 	out->floor = data->f;
-	out->map = data->map;
+	out->map = map_from_array(data->map);
 	out->textures[NORTH] = mlx_xpm_file_to_image(game->mlx->server, data->north,
 			NULL, NULL);
 	out->textures[SOUTH] = mlx_xpm_file_to_image(game->mlx->server, data->south,
