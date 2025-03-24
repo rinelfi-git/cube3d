@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:46:18 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/23 22:46:38 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/24 09:38:25 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,12 @@ static int	handle_keydown(int code, void *arg)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	t_cub3d	game;
 
-	(void)argc;
-	(void)argv;
 	cube_init(&game);
-	mlx_hook(game.mlx->server, 3, 1L << 1, handle_keyup, &game);
+	mlx_hook(game.mlx->window, 3, 1L << 1, handle_keyup, &game);
 	mlx_hook(game.mlx->window, 2, 1L << 0, handle_keydown, &game);
 	mlx_hook(game.mlx->window, 17, 0L, cube_destroy, &game);
 	mlx_loop_hook(game.mlx->server, gameloop, &game);

@@ -6,21 +6,23 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:47:22 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/23 23:10:06 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/24 09:36:27 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdlib.h>
 
-void	cube_init(t_cub3d *cube)
+void	cube_init(t_cub3d *game)
 {
-	cube->config = NULL;
-	cube->key = NULL;
-	cube->mlx = NULL;
-	cube->player = NULL;
-	cube->ray = NULL;
-	cube->refresh = 1;
+	game->mlx = mlx_alloc();
+	if (!game->mlx)
+		fatal_error(game, MALLOC_ERROR, 1);
+	game->config = NULL;
+	game->key = key_alloc(game);
+	game->player = player_alloc(game, 12, 12, PI / 2);
+	game->ray = NULL;
+	game->refresh = 1;
 }
 
 int	cube_destroy(t_cub3d *cube)

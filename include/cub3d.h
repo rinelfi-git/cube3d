@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 05:54:58 by erijania          #+#    #+#             */
-/*   Updated: 2025/03/23 23:17:14 by erijania         ###   ########.fr       */
+/*   Updated: 2025/03/24 09:36:19 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ struct s_wall_render
 };
 
 void		cube_init(t_cub3d *cube);
-t_mlx		*mlx_alloc(t_cub3d *cube);
+t_mlx		*mlx_alloc();
 t_config	*config_alloc(t_cub3d *cube, t_data *data);
 t_map		*map_alloc(int width, int height);
 t_map		*map_from_array(char **data);
